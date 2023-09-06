@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import { useSelector,useDispatch } from 'react-redux';
+import {actions} from './store/index';
 
 function App() {
+
+  const count=useSelector((state)=>state.counter);
+  const dispatch=useDispatch();
+ const incrementFn=()=>
+ {
+dispatch(actions.incrementFn());
+ }
+const decrementFn=()=>
+{
+  dispatch(actions.decrementFn());
+}
+const addBy=()=>
+{
+  dispatch(actions.AddByFn(10));
+}
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1><center>React Redux ToolKit Counter App Example</center></h1>
+      <h1>Count:{count}</h1>
+      <button onClick={incrementFn}>Increment</button>
+      <button onClick={decrementFn}>Decrement</button>
+      <button onClick={addBy}>Add 10</button>
     </div>
   );
 }
